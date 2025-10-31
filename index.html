@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zohaib Ur Rehman Khan | Legal Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #c9a96e;
+            --dark: #0f253b;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --transition: all 0.5s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(26, 58, 95, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: var(--primary);
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 37, 59, 0.8), rgba(15, 37, 59, 0.9)), url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.8s;
+        }
+
+        .hero .btn {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 1.1s;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 5px solid var(--secondary);
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 1s ease forwards 0.2s;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(201, 169, 110, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 70px;
+            height: 70px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .floating-element:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-float i {
+            margin-top: 2px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--secondary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat .label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--secondary);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-badge .years {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        /* Education Section */
+        .education {
+            background: #f0f2f5;
+        }
+
+        .education-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .education-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 50px;
+        }
+
+        .education-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .education-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .education-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .education-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .education-item:nth-child(odd) .education-content::after {
+            right: -10px;
+        }
+
+        .education-item:nth-child(even) .education-content::after {
+            left: -10px;
+        }
+
+        .education-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .education-content .date {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .education-content p {
+            color: var(--gray);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: #f0f2f5;
+        }
+
+        .experience-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .experience-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 50px;
+        }
+
+        .experience-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .experience-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .experience-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .experience-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .experience-item:nth-child(odd) .experience-content::after {
+            right: -10px;
+        }
+
+        .experience-item:nth-child(even) .experience-content::after {
+            left: -10px;
+        }
+
+        .experience-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .experience-content .date {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .experience-content p {
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .experience-content ul {
+            padding-left: 20px;
+            color: var(--gray);
+        }
+
+        .experience-content li {
+            margin-bottom: 5px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+
+        /* Legal Focus Section */
+        .legal-focus {
+            background: var(--dark);
+            color: white;
+        }
+
+        .legal-focus .section-title h2 {
+            color: white;
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .focus-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .focus-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .focus-item h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .focus-item p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        .contact-text h4 {
+            margin-bottom: 5px;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a1a2a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+        }
+
+        .footer-about {
+            max-width: 300px;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 50px;
+        }
+
+        .footer-links-column h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links-column ul {
+            list-style: none;
+        }
+
+        .footer-links-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links-column ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .footer-links {
+                gap: 30px;
+            }
+            
+            .education-timeline::before {
+                left: 31px;
+            }
+            
+            .education-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .education-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .education-content::after {
+                left: 21px;
+            }
+            
+            .experience-timeline::before {
+                left: 31px;
+            }
+            
+            .experience-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .experience-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .experience-content::after {
+                left: 21px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/923334281784?text=Hello%20Zohaib,%20I%20would%20like%20to%20discuss%20legal%20opportunities" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">Zohaib <span>Khan</span></div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#focus">Legal Focus</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-img">
+                    <img src="https://scontent.flhe38-1.fna.fbcdn.net/v/t39.30808-1/547375126_2609759349378153_1024167530187938945_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=107&ccb=1-7&_nc_sid=1d2534&_nc_eui2=AeFJOOybMWTkNpTiqXoO-iXlaJzV_LxZAfFonNX8vFkB8epaKIvlq5RAHQoQoR8E-7PH6LeFrUc3KAoy-ZBupYWZ&_nc_ohc=4UwVjltswTYQ7kNvwG_AmtS&_nc_oc=AdnRUsUoHQ9D4UbUT09BPSz3WGhneQ4M-aQv1FUKXSV-lmYow-cdSyaafdz7XH5l77-WlNO6jtmEzN0JPVsna3ic&_nc_zt=24&_nc_ht=scontent.flhe38-1.fna&_nc_gid=Xn2I_hX93DDp_qZcMqyfZg&oh=00_Aff0cbwvhz2Dn4Uczud8PD_zrOLTkmqU4T-dlblaJhMwNQ&oe=69098495" alt="Zohaib Ur Rehman Khan">
+                </div>
+                <h1>Zohaib Ur Rehman Khan</h1>
+                <p>Aspiring Legal Professional currently pursuing BA.LLB with a strong foundation in legal principles and a passion for justice. Seeking opportunities to contribute to a reputable legal firm.</p>
+                <a href="#contact" class="btn">Contact for Opportunities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Learn more about my background and aspirations in the legal field</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Legal Aspirations & Career Goals</h3>
+                    <p>I am a dedicated law student currently pursuing my BA.LLB degree with a strong interest in corporate law, litigation, and legal consultation. My analytical mindset and attention to detail make me well-suited for the legal profession.</p>
+                    <p>While I'm early in my legal career, I bring transferable skills from my experience in data analysis and management, including critical thinking, problem-solving, and the ability to handle complex information - all valuable assets in the legal field.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="number" id="years-education">0</span>
+                            <span class="label">Years of Legal Education</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number" id="overall-experience">0</span>
+                            <span class="label">Overall Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number" id="legal-experience">0</span>
+                            <span class="label">Legal Experience</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Legal Office">
+                    <div class="experience-badge">
+                        <span class="years">2026</span>
+                        <span>Expected Graduation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+                <p>My academic journey in legal studies</p>
+            </div>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="education-content">
+                        <h3>BA.LLB (Bachelor of Arts & Bachelor of Laws)</h3>
+                        <div class="date">2021 - 2026 (Expected)</div>
+                        <p>Toppers Law College</p>
+                        <p>Currently pursuing a comprehensive legal education with focus on constitutional law, contract law, criminal law, and legal research methodologies.</p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-content">
+                        <h3>Intermediate in Commerce</h3>
+                        <div class="date">Completed</div>
+                        <p>Forman Christian College</p>
+                        <p>Developed strong foundation in business principles and commercial transactions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+                <p>My journey in the corporate world</p>
+            </div>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <h3>iDSP Technologies</h3>
+                        <div class="date">May 2025 - Present</div>
+                        <p><strong>Senior Analytics Expert</strong></p>
+                        <ul>
+                            <li>Leading data analyst team, delivering insights and reports to support business goals</li>
+                            <li>Providing advanced data analysis for Amazon DSPs (USA) across payroll, fleet, and invoicing</li>
+                            <li>Developing and maintaining Power BI/Excel dashboards (DAX, Power Query, VBA) for automated reporting</li>
+                            <li>Delivering data-driven insights to improve operational efficiency and decision-making</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <h3>The Pro Accountants and Tax Consultants LLC</h3>
+                        <div class="date">Mar 2025 - May 2025</div>
+                        <p><strong>Senior Data Analyst</strong></p>
+                        <ul>
+                            <li>Developed customized MS Excel and Google Sheets applications (VBA & Apps Script) for client requirements</li>
+                            <li>Designed and maintained interactive dashboards (Power BI, MS Excel, Google Spreadsheets) for data-driven decisions</li>
+                            <li>Transformed complex administrative, accounting, and financial data into actionable insights</li>
+                            <li>Leveraged advanced Excel (VBA macros, Power Pivot, Power Query) for process streamlining</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <h3>Cyber System</h3>
+                        <div class="date">Feb 2025 - May 2025</div>
+                        <p><strong>Data Analyst & Quality Assurance Executive</strong></p>
+                        <ul>
+                            <li>Spearheaded QA processes for international medical billing projects, ensuring compliance and high-quality outcomes</li>
+                            <li>Designed interactive dashboards (Power BI & MS Excel) using VBA, Power Query, and Power Pivots</li>
+                            <li>Utilized data analysis to extract actionable insights, contributing to strategic planning and business growth</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <h3>Abacus</h3>
+                        <div class="date">Jul 2023 - Feb 2025</div>
+                        <p><strong>Sr. WorkForce Management Analyst (Internationals)</strong></p>
+                        <ul>
+                            <li>Led international WFM team (1000+ workforce), optimizing processes and enhancing performance</li>
+                            <li>Developed multiple performance dashboards for team analysis and tracking</li>
+                            <li>Managed tardiness tracking, call time analysis, breaks monitoring, and HR metrics</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <h3>Abacus</h3>
+                        <div class="date">Oct 2022 - Jun 2023</div>
+                        <p><strong>Operations Team Lead (Acting)</strong></p>
+                        <ul>
+                            <li>Managed inbound/outbound customer interactions, ensuring high satisfaction</li>
+                            <li>Developed daily, weekly, and monthly performance reports for clients</li>
+                            <li>Oversaw team activities, ensured target achievement, and maintained positive work environment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Competencies</h2>
+                <p>Legal knowledge and transferable skills</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Legal Practical Knowledge</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Constitutional Law</span>
+                            <span>5%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 5%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Contract Law</span>
+                            <span>5%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 5%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Criminal Law</span>
+                            <span>5%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 5%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Legal Research</span>
+                            <span>5%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 5%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Transferable Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Analytical Thinking</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Research & Analysis</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Problem Solving</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Attention to Detail</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 92%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Microsoft Office, BI Softwares, AI Tools</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Web Apps Development, Google Ads</span>
+                            <span>55%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 55%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Data Analysis</span>
+                            <span>98%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 98%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Document Management</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Focus Section -->
+    <section class="legal-focus" id="focus">
+        <div class="container">
+            <div class="section-title">
+                <h2>Legal Focus Areas</h2>
+                <p>Areas of legal practice I'm passionate about</p>
+            </div>
+            <div class="focus-grid">
+                <div class="focus-item">
+                    <div class="focus-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Corporate Law</h3>
+                    <p>Business formation, compliance, contracts, and corporate governance matters.</p>
+                </div>
+                <div class="focus-item">
+                    <div class="focus-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Litigation</h3>
+                    <p>Civil and commercial litigation with focus on achieving favorable outcomes for clients.</p>
+                </div>
+                <div class="focus-item">
+                    <div class="focus-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Contract Law</h3>
+                    <p>Drafting, reviewing, and negotiating contracts to protect client interests.</p>
+                </div>
+                <div class="focus-item">
+                    <div class="focus-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Legal Consultation</h3>
+                    <p>Providing strategic legal advice and planning for various legal challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <p>Get in touch for legal opportunities</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>Lahore, Punjab Pakistan</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>03334281784</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>zzohaibr.khan@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Education Status</h4>
+                            <p>BA.LLB Student (2021-2026)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Zohaib <span>Khan</span></div>
+                    <p>Aspiring legal professional with strong analytical skills and dedication to justice. Currently pursuing BA.LLB and seeking opportunities in the legal field.</p>
+                    <div class="social-links">
+                        <a href="https://zohaib-ur-rehman-khan.netlify.app/" class="social-link" target="_blank"><i class="fas fa-globe"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#education">Education</a></li>
+                            <li><a href="#experience">Experience</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                            <li><a href="#focus">Legal Focus</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Legal Interests</h4>
+                        <ul>
+                            <li><a href="#">Corporate Law</a></li>
+                            <li><a href="#">Litigation</a></li>
+                            <li><a href="#">Contract Law</a></li>
+                            <li><a href="#">Legal Research</a></li>
+                            <li><a href="#">Legal Consultation</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Zohaib Ur Rehman Khan. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Animated counters
+        function animateCounter(id, start, end, duration) {
+            let obj = document.getElementById(id);
+            let startTime = null;
+            let step = (timestamp) => {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Initialize counters when section is in view
+        const aboutSection = document.querySelector('.about');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter('years-education', 0, 5, 2000);
+                    animateCounter('overall-experience', 0, 4, 2000);
+                    animateCounter('legal-experience', 0, 0, 2000);
+                    observer.unobserve(aboutSection);
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(aboutSection);
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message. I will get back to you soon!');
+            contactForm.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
